@@ -46,8 +46,7 @@ class NotificatonRepository extends ServiceEntityRepository
    {
        return $this->createQueryBuilder('n')
            ->join('n.employee','e')
-           ->Where('n.id = e.id')
-           ->andWhere('n.id = :val')
+           ->andWhere('e.id = :val')
            ->setParameter('val', $value)
            ->orderBy('n.id', 'ASC')
            ->getQuery()

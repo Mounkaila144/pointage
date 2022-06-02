@@ -16,8 +16,15 @@ class SocieteController extends AbstractController
     #[Route('/', name: 'app_societe_index', methods: ['GET'])]
     public function index(SocieteRepository $societeRepository): Response
     {
+        $s=$societeRepository->findAll();
+        $auth=[];
+        foreach ($s as $ss){
+            $auth[]=$ss->getId();
+        }
+        $so=count($auth);
         return $this->render('societe/index.html.twig', [
             'societes' => $societeRepository->findAll(),
+            'so'=>$so,
         ]);
     }
 

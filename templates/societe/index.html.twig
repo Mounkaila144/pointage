@@ -35,11 +35,13 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</span></td>
+                <td colspan="8">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    {% if so is same as(0) %}
     <a href="{{ path('app_societe_new') }}"><button type="submit" class="btn btn-primary me-2">Ajouter</button></a>
+    {% endif %}
 
 {% endblock %}

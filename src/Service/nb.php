@@ -26,9 +26,9 @@ class nb extends AbstractController
         $a = $this->em->getRepository(Autorisation::class)->findAll();
         $auth = [];
         foreach ($a as $as) {
-            $auth = $as->getId();
+            $auth[] = $as->getId();
         }
-        return $auth;
+        return count($auth);
     }
 
     public function b()
@@ -36,17 +36,16 @@ class nb extends AbstractController
         $id=$this->getUser()->getId();
         $a = $this->em->getRepository(Notification::class)->createQueryBuilder('n')
             ->join('n.employee','e')
-            ->Where('n.id = e.id')
-            ->andWhere('n.id = :val')
+            ->andWhere('e.id = :val')
             ->setParameter('val', $id)
             ->orderBy('n.id', 'ASC')
             ->getQuery()
             ->getResult();
         $auth = [];
         foreach ($a as $as) {
-            $auth = $as->getId();
+            $auth[] = $as->getId();
         }
-        return $auth;
+        return count($auth);
     }
 
 

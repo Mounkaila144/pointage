@@ -13,7 +13,6 @@
                 <th>type</th>
                 <th>message</th>
                 <th>envoiyer à</th>
-                <th>actions</th>
             </tr>
         </thead>
         <tbody>
@@ -24,9 +23,6 @@
                 <td><span class="fw-normal">{{ notification.message }}</span></td>
                 <td><a href="{{ path('app_employee_showbynotif', {'id': notification.id}) }}"><button type="submit" class="btn btn-info me-2">
                     Employer</button></a></td>
-                <td><span class="fw-normal">
-                    <a href="{{ path('app_notification_edit', {'id': 1}) }}"><button class="btn btn-danger me-2">edit</button></a>
-                </span></td>
             </tr>
         {% else %}
             <tr>
