@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Notification{% endblock %}
+
+{% block body %}
+    <h1>Notification</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td><span class="fw-normal">{{ notification.id }}</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_notif_recu_index') }}
+
+    <a href="{{ path('app_notif_recu_edit', {'id': notification.id}) }}">edit</a>
+
+    {{ include('notif_recu/_delete_form.html.twig') }}
+{% endblock %}

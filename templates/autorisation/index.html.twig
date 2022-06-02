@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Autorisation index{% endblock %}
+
+{% block body %}
+    <h1>Autorisation</h1>
+<div class="table-responsive">
+    <table class="table user-table table-hover align-items-center">
+        <thead>
+        <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for autorisation in autorisations %}
+            <tr>
+                <td><span class="fw-normal">{{ autorisation.id }}</span></td>
+                <td><span class="fw-normal">{{ autorisation.date ? autorisation.date|date : '' }}</span></td>
+                {% if autorisation.status is same as(1) %}
+                    <td><span class="fw-normal">En Attente</span></td>
+                {% endif %}
+                {% if autorisation.status is same as(2) %}
+                    <td><span class="fw-normal text-success">Autoriser</span></td>
+                {% endif %}
+                {% if autorisation.status is same as(3) %}
+                <td><span class="fw-normal text-danger">Refuser</span></td>
+                {% endif %}
+
+                <td><span class="fw-normal">
+                    <a href="{{ path('app_autorisation_show', {'id': autorisation.id}) }}"><button type="submit" class="btn btn-primary me-2">Show</button></a>
+                    <a href="{{ path('app_autorisation_edit', {'id': autorisation.id}) }}"><button class="btn btn-danger me-2">edit</button></a>
+                </span></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}

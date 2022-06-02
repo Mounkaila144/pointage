@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GroupEmployer index{% endblock %}
+
+{% block body %}
+    <h1>Groupe Employer</h1>
+<div class="table-responsive">
+    <table class="table user-table table-hover align-items-center">
+        <thead>
+        <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Tache</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for group_employer in group_employers %}
+            <tr>
+                <td><span class="fw-normal">{{ group_employer.id }}</span></td>
+                <td><span class="fw-normal">{{ group_employer.nombre }}</span></td>
+                <td><span class="fw-normal">{{ group_employer.tache }}</span></td>
+                <td><span class="fw-normal">
+                    <a href="{{ path('app_group_employer_show', {'id': group_employer.id}) }}"><button type="submit" class="btn btn-primary me-2">Participant</button></a>
+                    <a href="{{ path('app_group_employer_edit', {'id': group_employer.id}) }}"><button class="btn btn-danger me-2">edit</button></a>
+                </span></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('app_group_employer_new') }}"><button type="submit" class="btn btn-primary me-2">Ajouter</button></a>
+
+{% endblock %}

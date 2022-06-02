@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Employee index{% endblock %}
+
+{% block body %}
+    <h1>Listes des Employeés</h1>
+<nav class="navbar navbar-top navbar-expand navbar-dashboard navbar-dark ps-0 pe-2 pb-0">
+    <div class="container-fluid px-0">
+        <div class="d-flex justify-content-between w-100" id="navbarSupportedContent">
+            <div class="d-flex align-items-center">
+                <button id="sidebar-toggle"
+                        class="sidebar-toggle me-3 btn btn-icon-only d-none d-lg-inline-block align-items-center justify-content-center">
+                    <svg class="toggle-icon" fill="currentColor" viewBox="0 0 20 20"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                              clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+{#                <form class="navbar-search form-inline" id="navbar-search-main">#}
+{#                    <div class="input-group input-group-merge search-bar"><span class="input-group-text"#}
+{#                                                                                id="topbar-addon"><svg#}
+{#                                    class="icon icon-xs" x-description="Heroicon name: solid/search"#}
+{#                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"#}
+{#                                    aria-hidden="true"><path fill-rule="evenodd"#}
+{#                                                             d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"#}
+{#                                                             clip-rule="evenodd"></path></svg> </span><input type="text"#}
+{#                                                                                                             class="form-control"#}
+{#                                                                                                             id="topbarInputIconLeft"#}
+{#                                                                                                             placeholder="Search"#}
+{#                                                                                                             aria-label="Search"#}
+{#                                                                                                             aria-describedby="topbar-addon">#}
+{#                    </div>#}
+{#                </form>#}
+                {{ form(form) }}
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="table user-table table-hover align-items-center">
+    <table class="table user-table table-hover align-items-center">
+        <thead>
+        <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employee in employees %}
+            <tr>
+                <td><span class="fw-normal">{{ employee.id }}</span></td>
+                <td><span class="fw-normal">{{ employee.email }}</span></td>
+                <td><span class="fw-normal">{{ employee.nom }}</span></td>
+                <td><span class="fw-normal text-success">{{ employee.prenom }}</span></td>
+                <td><span class="fw-normal"><span class="fw-normal">
+                    <a href="{{ path('app_employee_show', {'id': employee.id}) }}"><button type="submit" class="btn btn-primary me-2">Show</button></a>
+                    <a href="{{ path('app_employee_edit', {'id': employee.id}) }}"><button class="btn btn-danger me-2">edit</button></a>
+                    <a href="{{ path('app_notif_employer_new', {'id': employee.id}) }}"><button class="btn btn-info me-2">send notification</button></a>
+                </span></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('app_register') }}"><button type="submit" class="btn btn-primary me-2">Ajouter</button></a>
+
+{% endblock %}

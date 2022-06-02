@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Societe{% endblock %}
+
+{% block body %}
+    <h1>Societe</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td><span class="fw-normal">{{ societe.id }}</span></td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td><span class="fw-normal">{{ societe.nom }}</span></td>
+            </tr>
+            <tr>
+                <th>Localisation</th>
+                <td><span class="fw-normal">{{ societe.localisation }}</span></td>
+            </tr>
+            <tr>
+                <th>Nombre_employee</th>
+                <td><span class="fw-normal">{{ societe.nombreEmployee }}</span></td>
+            </tr>
+            <tr>
+                <th>Heure_debut_travail</th>
+                <td><span class="fw-normal">{{ societe.heureDebutTravail ? societe.heureDebutTravail|date('Y-m-d') : '' }}</span></td>
+            </tr>
+            <tr>
+                <th>Heure_fin_travail</th>
+                <td><span class="fw-normal">{{ societe.heureFinTravail ? societe.heureFinTravail|date('Y-m-d') : '' }}</span></td>
+            </tr>
+            <tr>
+                <th>Duree_pause</th>
+                <td><span class="fw-normal">{{ societe.dureePause }}</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_societe_index') }}
+
+    <a href="{{ path('app_societe_edit', {'id': societe.id}) }}"><button class="btn btn-danger me-2">edit</button></a>
+
+    {{ include('societe/_delete_form.html.twig') }}
+{% endblock %}

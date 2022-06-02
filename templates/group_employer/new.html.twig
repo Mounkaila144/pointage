@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New GroupEmployer{% endblock %}
+
+{% block body %}
+    <h1>Create new GroupEmployer</h1>
+
+    {{ include('group_employer/_form.html.twig') }}
+
+    <a href="{{ path('app_group_employer_index') }}
+{% endblock %}

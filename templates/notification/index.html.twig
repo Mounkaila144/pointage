@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Notification index{% endblock %}
+
+{% block body %}
+    <h1>Notification Envoyée</h1>
+
+<div class="table-responsive">
+    <table class="table user-table table-hover align-items-center">
+        <thead>
+        <tr>
+                <th>Id</th>
+                <th>type</th>
+                <th>message</th>
+                <th>envoiyer à</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for notification in notifications %}
+            <tr>
+                <td><span class="fw-normal">{{ notification.id }}</span></td>
+                <td><span class="fw-normal">{{ notification.type }}</span></td>
+                <td><span class="fw-normal">{{ notification.message }}</span></td>
+                <td><a href="{{ path('app_employee_showbynotif', {'id': notification.id}) }}"><button type="submit" class="btn btn-info me-2">
+                    Employer</button></a></td>
+                <td><span class="fw-normal">
+                    <a href="{{ path('app_notification_edit', {'id': 1}) }}"><button class="btn btn-danger me-2">edit</button></a>
+                </span></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_notification_new') }}"><button type="submit" class="btn btn-primary me-2">Envoyer une notification</button></a>
+{% endblock %}

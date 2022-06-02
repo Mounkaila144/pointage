@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Notification Recu{% endblock %}
+
+{% block body %}
+    <h1>Notification Recu</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Message</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for notification in notifications %}
+            <tr>
+                <td><span class="fw-normal">{{ notification.id }}</span></td>
+                <td><span class="fw-normal">{{ notification.type }}</span></td>
+                <td><span class="fw-normal">{{ notification.message }}</span></td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</span></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

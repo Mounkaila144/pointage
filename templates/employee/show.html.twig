@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Employee{% endblock %}
+
+{% block body %}
+    <h1>Employee</h1>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td><span class="fw-normal">{{ employee.id }}</span></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><span class="fw-normal">{{ employee.email }}</span></td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td><span class="fw-normal">{{ employee.nom }}</span></td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td><span class="fw-normal">{{ employee.prenom }}</span></td>
+            </tr>
+            <tr>
+                <th>Groupe</th>
+                <td><span class="fw-normal">{{ employee.groupe }}</span></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_employee_index') }}
+
+    <a href="{{ path('app_employee_edit', {'id': employee.id}) }}"><button class="btn btn-danger me-2">edit</button></a>
+
+    {{ include('employee/_delete_form.html.twig') }}
+{% endblock %}

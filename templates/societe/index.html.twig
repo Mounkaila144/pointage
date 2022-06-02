@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Societe index{% endblock %}
+
+{% block body %}
+    <h1>Societe </h1>
+<div class="table-responsive">
+    <table class="table user-table table-hover align-items-center">
+        <thead>
+        <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Localisation</th>
+                <th>Nombre_employee</th>
+                <th>Heure_debut</th>
+                <th>Heure_fin</th>
+                <th>Duree_pause</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for societe in societes %}
+            <tr>
+                <td><span class="fw-normal">{{ societe.id }}</span></td>
+                <td><span class="fw-normal">{{ societe.nom }}</span></td>
+                <td><span class="fw-normal">{{ societe.localisation }}</span></td>
+                <td><span class="fw-normal">{{ societe.nombreEmloyee }}</span></td>
+                <td><span class="fw-normal">{{ societe.heureDebutTravail ? societe.heureDebutTravail|date('H:i') : '' }}</span></td>
+                <td><span class="fw-normal">{{ societe.heureFinTravail ? societe.heureFinTravail|date('H:i') : '' }}</span></td>
+                <td><span class="fw-normal">{{ societe.dureePause }}</span></td>
+                <td><span class="fw-normal">
+                    <a href="{{ path('app_societe_show', {'id': societe.id}) }}"><button type="submit" class="btn btn-primary me-2">Show</button></a>
+                    <a href="{{ path('app_societe_edit', {'id': societe.id}) }}"><button class="btn btn-danger me-2">edit</button></a>
+                </span></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</span></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('app_societe_new') }}"><button type="submit" class="btn btn-primary me-2">Ajouter</button></a>
+
+{% endblock %}

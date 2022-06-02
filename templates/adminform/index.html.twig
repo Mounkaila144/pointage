@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin index{% endblock %}
+
+{% block body %}
+    <h1>Admin index</h1>
+
+<div class="table-responsive">
+    <table class="table user-table table-hover align-items-center">
+        <thead>
+        <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for admin in admins %}
+            <tr>
+                <td><span class="fw-normal">{{ admin.id }}</span></td>
+                <td><span class="fw-normal">{{ admin.email }}</span></td>
+                <td><span class="fw-normal">{{ admin.nom }}</span></td>
+                <td><span class="fw-normal">{{ admin.prenom }}</span></td>
+                <td><span class="fw-normal">
+                    <a href="{{ path('app_adminform_show', {'id': admin.id}) }}"><button type="submit" class="btn btn-primary me-2">Show</button></a>
+                    <a href="{{ path('app_adminform_edit', {'id': admin.id}) }}"><button class="btn btn-danger me-2">edit</button></a>
+                </span></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</span></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_register_admin_admin') }}"><button type="submit" class="btn btn-primary me-2">Ajouter</button></a>
+{% endblock %}

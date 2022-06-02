@@ -1,19 +1,116 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Volt Premium Bootstrap Dashboard - Users List</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta name="title" content="Volt Premium Bootstrap Dashboard - Users List">
+    <meta name="author" content="Themesberg">
+    <meta name="description"
+          content="Volt Pro is a Premium Bootstrap 5 Admin Dashboard featuring over 800 components, 10+ plugins and 20 example pages using Vanilla JS.">
+    <meta name="keywords"
+          content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, themesberg, themesberg dashboard, themesberg admin dashboard">
+    <link rel="canonical" href="https://themesberg.com/product/admin-dashboard/volt-premium-bootstrap-5-dashboard">
+    <meta property="og:type" content="website">
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('./assets/img/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('./assets/img/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('./assets/img/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('./assets/img/favicon/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ asset('./assets/img/favicon/safari-pinned-tab.svg') }}" color="#ffffff">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <link type="text/css" href="{{ asset('./vendor/sweetalert2/dist/sweetalert2.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('./vendor/notyf/notyf.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('./vendor/fullcalendar/main.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('./vendor/apexcharts/dist/apexcharts.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('./vendor/dropzone/dist/min/dropzone.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('./vendor/choices.js/public/assets/styles/choices.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('./vendor/leaflet/dist/leaflet.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('./css/volt.css') }}" rel="stylesheet">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141734189-6"></script>
+    <script>window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-141734189-6');</script>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                '../../../www.googletagmanager.com/gtm5445.html?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-THQTXJ7');</script>
+    <script async src='../../cdn-cgi/challenge-platform/h/g/scripts/invisiblefc3a.js?ts=1654070400'></script>
+</head>
     <body>
-        {% block body %}{% endblock %}
+    {% include "admin/template/navbar.html.twig" %}
+    {% include "admin/template/sidebar.html.twig" %}
+
+    <main class="content">
+
+        <div class="py-4">
+            <div class="dropdown">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+
+    </main>
+
+
+
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+    <!-- Core -->
+    <script data-cfasync="false" src="{{ asset('./email-decode.min.js') }}"></script>
+    <script src="{{ asset('./vendor/%40popperjs/core/dist/umd/popper.min.js') }}"></script>
+    <script src="{{ asset('./vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('./vendor/onscreen/dist/on-screen.umd.min.js') }}"></script>
+    <script src="{{ asset('./vendor/nouislider/distribute/nouislider.min.js') }}"></script>
+    <script src="{{ asset('./vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js') }}"></script>
+    <script src="{{ asset('./vendor/countup.js/dist/countUp.umd.js') }}"></script>
+    <script src="{{ asset('./vendor/apexcharts/dist/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('./vendor/vanillajs-datepicker/dist/js/datepicker.min.js') }}"></script>
+    <script src="{{ asset('./vendor/simple-datatables/dist/umd/simple-datatables.js') }}"></script>
+    <script src="{{ asset('./vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('./moment.min.js') }}"></script>
+    <script src="{{ asset('./vendor/vanillajs-datepicker/dist/js/datepicker.min.js') }}"></script>
+    <script src="{{ asset('./vendor/fullcalendar/main.min.js') }}"></script>
+    <script src="{{ asset('./vendor/dropzone/dist/min/dropzone.min.js') }}"></script>
+    <script src="{{ asset('./vendor/choices.js/public/assets/scripts/choices.min.js') }}"></script>
+    <script src="{{ asset('./vendor/notyf/notyf.min.js') }}"></script>
+    <script src="{{ asset('./vendor/leaflet/dist/leaflet.js') }}"></script>
+    <script src="{{ asset('./vendor/svg-pan-zoom/dist/svg-pan-zoom.min.js') }}"></script>
+    <script src="{{ asset('./vendor/svgmap/dist/svgMap.min.js') }}"></script>
+    <script src="{{ asset('./vendor/simplebar/dist/simplebar.min.js') }}"></script>
+    <script src="{{ asset('./vendor/sortablejs/Sortable.min.js') }}"></script>
+    <script src="{{ asset('./assets/js/volt.js') }}"></script>
+    <script async defer="defer" src="{{ asset('./buttons.js') }}"></script>
+
+    <script type="text/javascript">(function () {
+            window['__CF$cv$params'] = {
+                r: '71471658eaf03312',
+                m: 'fUn82CtfpW8SBB5R._lx9sNkfEA8mHY_g1ikovD5CvI-1654077469-0-AcNc4gQvPo3cYPkhRIZ2BEkPReMiSjwrqPp7X2sAfpWCrRyVNa18G1Ldqow/NN2jQTBonWMuDKvhGDRg4LtT8pFl+L3CeRIRzNeNfe0YfH3WpwgMysHEwRd1rtVLocF7ralu7C/DR/c2bxOv4hL723c=',
+                s: [0xe7ff81877b, 0x84a9384436],
+                u: '/cdn-cgi/challenge-platform/h/g'
+            }
+        })();</script>
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194"
+            integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw=="
+            data-cf-beacon='{"rayId":"71471658eaf03312","token":"3a2c60bab7654724a0f7e5946db4ea5a","version":"2021.12.0","si":100}'
+            crossorigin="anonymous"></script>
+
     </body>
 </html>

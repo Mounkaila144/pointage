@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GroupEmployer{% endblock %}
+
+{% block body %}
+    <h1>Employee du Groupe n°{{ group_employer.id }}</h1>
+
+    <table class="table user-table table-hover align-items-center">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Email</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for employee in employees %}
+            <tr>
+                <td><span class="fw-normal"><span class="fw-normal">{{ employee.id }}</span></td>
+                <td><span class="fw-normal"><span class="fw-normal">{{ employee.email }}</span></td>
+                <td><span class="fw-normal"><span class="fw-normal">{{ employee.nom }}</span></td>
+                <td><span class="fw-normal"><span class="fw-normal text-success">{{ employee.prenom }}</span></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</span></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
