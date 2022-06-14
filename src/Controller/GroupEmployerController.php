@@ -30,7 +30,10 @@ class GroupEmployerController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $groupEmployerRepository->add($groupEmployer, true);
+
+             $this->addFlash('success','tout as ete cree tres bienF');
 
             return $this->redirectToRoute('app_group_employer_index', [], Response::HTTP_SEE_OTHER);
         }

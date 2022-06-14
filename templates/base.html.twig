@@ -56,6 +56,7 @@
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-THQTXJ7');</script>
     <script async src='../../cdn-cgi/challenge-platform/h/g/scripts/invisiblefc3a.js?ts=1654070400'></script>
+
 </head>
     <body>
     {% include "admin/template/navbar.html.twig" %}
@@ -65,7 +66,25 @@
 
         <div class="py-4">
             <div class="dropdown">
+
+
+                {% for message in app.flashes('success') %}
+            <div class="alert alert-success alert-dismissible">
+                <strong>Success</strong> {{ message }}
+
+            </div>
+
+                {% endfor %}
+
+                {% for message in app.flashes('success') %}
+
+                    <h1> {{ message }}</h1>
+
+                {% endfor %}
+
                 {% block body %}{% endblock %}
+
+
             </div>
         </div>
 
