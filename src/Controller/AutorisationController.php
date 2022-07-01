@@ -49,28 +49,19 @@ class AutorisationController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_autorisation_edit', methods: ['GET', 'POST'])]
-    public function edit(int $id,Request $request, Autorisation $autorisation, AutorisationRepository $autorisationRepository): Response
+    #[Route('yes/{id}', name: 'app_aurorisation_yes', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Autorisation $autorisation, AutorisationRepository $autorisationRepository): Response
     {
-        $p=$autorisationRepository->find($id);
-
-        $form = $this->createForm(AutorisationType::class, $autorisation);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $autorisation
-                ->setDate($p->getDate())
-                ->setEmploiyee($p->getEmploiyee());
-            $autorisationRepository->add($autorisation, true);
-
-            return $this->redirectToRoute('app_autorisation_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('autorisation/_form.html.twig', [
-            'autorisation' => $autorisation,
-            'form' => $form,
-        ]);
+            $autorisationRepository->add($autorisation->setStatus(2), true);
+        return $this->redirectToRoute("app_autorisation_index");
     }
+      #[Route('no/{id}', name: 'app_aurorisation_no', methods: ['GET', 'POST'])]
+    public function no(Request $request, Autorisation $autorisation, AutorisationRepository $autorisationRepository): Response
+    {
+            $autorisationRepository->add($autorisation->setStatus(3), true);
+        return $this->redirectToRoute("app_autorisation_index");
+    }
+
 
     #[Route('/{id}', name: 'app_autorisation_delete', methods: ['POST'])]
     public function delete(Request $request, Autorisation $autorisation, AutorisationRepository $autorisationRepository): Response

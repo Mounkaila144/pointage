@@ -2,12 +2,15 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Repository\AutorisationRepository;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 
-#[ORM\Entity(repositoryClass: AutorisationRepository::class)]
 #[ApiResource]
+#[ORM\Entity(repositoryClass: AutorisationRepository::class)]
+#[ApiFilter(SearchFilter::class, properties: ['emploiyee' => 'exact'])]
 class Autorisation
 {
     #[ORM\Id]

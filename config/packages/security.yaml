@@ -22,6 +22,17 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+        login:
+            pattern: ^/api/login
+            stateless: true
+            provider: app_employee_provider
+            json_login:
+                check_path: /api/login_check
+                username_path: email
+                password_path: password
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+
         main:
             lazy: true
             provider: all
@@ -42,6 +53,7 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/employee, roles: ROLE_EMPLOYEE }
+        - { path: ^/api/login, roles: PUBLIC_ACCESS }
 
 when@test:
     security:

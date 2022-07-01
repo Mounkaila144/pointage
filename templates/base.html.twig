@@ -2,9 +2,9 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Volt Premium Bootstrap Dashboard - Users List</title>
+    <title>Pointage</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <meta name="title" content="Volt Premium Bootstrap Dashboard - Users List">
+    <meta name="title" content="Pointage">
     <meta name="author" content="Themesberg">
     <meta name="description"
           content="Volt Pro is a Premium Bootstrap 5 Admin Dashboard featuring over 800 components, 10+ plugins and 20 example pages using Vanilla JS.">
@@ -56,7 +56,6 @@
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-THQTXJ7');</script>
     <script async src='../../cdn-cgi/challenge-platform/h/g/scripts/invisiblefc3a.js?ts=1654070400'></script>
-
 </head>
     <body>
     {% include "admin/template/navbar.html.twig" %}
@@ -66,25 +65,7 @@
 
         <div class="py-4">
             <div class="dropdown">
-
-
-                {% for message in app.flashes('success') %}
-            <div class="alert alert-success alert-dismissible">
-                <strong>Success</strong> {{ message }}
-
-            </div>
-
-                {% endfor %}
-
-                {% for message in app.flashes('success') %}
-
-                    <h1> {{ message }}</h1>
-
-                {% endfor %}
-
                 {% block body %}{% endblock %}
-
-
             </div>
         </div>
 

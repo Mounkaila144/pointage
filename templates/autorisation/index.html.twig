@@ -9,29 +9,42 @@
         <thead>
         <tr>
                 <th>Id</th>
+                <th>Fait par</th>
                 <th>Date</th>
                 <th>Status</th>
-                <th>actions</th>
+                <th>Autoriser</th>
+                <th>Refuser</th>
+                <th>Suprimer</th>
             </tr>
         </thead>
         <tbody>
         {% for autorisation in autorisations %}
             <tr>
                 <td><span class="fw-normal">{{ autorisation.id }}</span></td>
+                <td><a href="{{ path('app_employee_show', {'id': autorisation.emploiyee.id}) }}" class="btn btn-success">{{ autorisation.emploiyee.nom }}</a></td>
                 <td><span class="fw-normal">{{ autorisation.date ? autorisation.date|date : '' }}</span></td>
+                <td>
                 {% if autorisation.status is same as(1) %}
-                    <td><span class="fw-normal">En Attente</span></td>
+                    <span class="fw-normal">En Attente</span>
                 {% endif %}
                 {% if autorisation.status is same as(2) %}
-                    <td><span class="fw-normal text-success">Autoriser</span></td>
+                    <span class="fw-normal text-success">Autoriser</span>
                 {% endif %}
                 {% if autorisation.status is same as(3) %}
-                <td><span class="fw-normal text-danger">Refuser</span></td>
+                <span class="fw-normal text-danger">Refuser</span>
                 {% endif %}
+                </td>
+                <td>
+                    <a href="{{ path('app_aurorisation_yes', {'id': autorisation.id}) }}"><button class="btn btn-outline-success me-2">Autoriser</button></a>
+                </td>
+                <td>
+                    <a href="{{ path('app_aurorisation_no', {'id': autorisation.id}) }}"><button class="btn btn-outline-danger me-2">Refuser</button></a>
 
-                <td><span class="fw-normal">
-                    <a href="{{ path('app_autorisation_edit', {'id': autorisation.id}) }}"><button class="btn btn-danger me-2">edit</button></a>
-                </span></td>
+                </td>
+                <td>
+                    {{ include('autorisation/_delete_form.html.twig') }}
+
+                </td>
             </tr>
         {% else %}
             <tr>

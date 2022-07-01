@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Employee;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,7 +19,7 @@ class EmployeeType extends AbstractType
             ->add('password')
             ->add('isVerified')
             ->add('nom')
-            ->add('naissance')
+            ->add('naissance',BirthdayType::class)
             ->add('socoiet')
             ->add('prenom')
             ->add('groupe')

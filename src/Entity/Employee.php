@@ -11,11 +11,11 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use ApiPlatform\Core\Annotation\ApiResource;
 
+#[ApiResource]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`employee`')]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 #[ORM\Index(name: '`employee`', columns: ['nom', 'prenom','email'], flags: ['fulltext'])]
-#[ApiResource]
 class Employee implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -53,6 +53,9 @@ class Employee implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne(targetEntity: GroupEmployer::class, inversedBy: 'employees')]
     private $groupe;
 
+    #[ORM\OneToMany(mappedBy: 'emploiyee', targetEntity: Pointage::class)]
+    private $pointages;
+
 
     public function __toString(): string
     {
@@ -64,6 +67,7 @@ class Employee implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->autorisations = new ArrayCollection();
         $this->notificatons = new ArrayCollection();
+        $this->pointages = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -250,6 +254,36 @@ class Employee implements UserInterface, PasswordAuthenticatedUserInterface
     public function setGroupe(?GroupEmployer $groupe): self
     {
         $this->groupe = $groupe;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Pointage>
+     */
+    public function getPointages(): Collection
+    {
+        return $this->pointages;
+    }
+
+    public function addPointage(Pointage $pointage): self
+    {
+        if (!$this->pointages->contains($pointage)) {
+            $this->pointages[] = $pointage;
+            $pointage->setEmploiyee($this);
+        }
+
+        return $this;
+    }
+
+    public function removePointage(Pointage $pointage): self
+    {
+        if ($this->pointages->removeElement($pointage)) {
+            // set the owning side to null (unless already changed)
+            if ($pointage->getEmploiyee() === $this) {
+                $pointage->setEmploiyee(null);
+            }
+        }
 
         return $this;
     }

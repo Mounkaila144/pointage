@@ -8,8 +8,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 
-#[ORM\Entity(repositoryClass: GroupEmployerRepository::class)]
 #[ApiResource]
+#[ORM\Entity(repositoryClass: GroupEmployerRepository::class)]
 class GroupEmployer
 {
     #[ORM\Id]

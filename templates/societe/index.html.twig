@@ -29,7 +29,7 @@
                 <td><span class="fw-normal">{{ societe.heureFinTravail ? societe.heureFinTravail|date('H:i') : '' }}</span></td>
                 <td><span class="fw-normal">{{ societe.dureePause }}</span></td>
                 <td><span class="fw-normal">
-                    <a href="{{ path('app_societe_show', {'id': societe.id}) }}"><button type="submit" class="btn btn-primary me-2">Show</button></a>
+                    <a href="{{ path('app_societe_show', {'id': societe.id}) }}"><button type="submit" class="btn btn-primary me-2">Afficher</button></a>
                     <a href="{{ path('app_societe_edit', {'id': societe.id}) }}"><button class="btn btn-danger me-2">edit</button></a>
                 </span></td>
             </tr>
