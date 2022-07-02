@@ -3,13 +3,13 @@
 {% block title %}Employee{% endblock %}
 
 {% block body %}
-    <h1>Employee</h1>
+    <h1>Employee N°{{ employee.id }}</h1>
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td><span class="fw-normal">{{ employee.id }}</span></td>
-            </tr>
+
+                <td class="w-5"><img style="width: 200px; height: 200px" class="img-fluid img-thumbnail" src="{{ vich_uploader_asset(employee, 'imageFile') }}" alt="{{ employee.nom }}"></td>            </tr>
+
+
             <tr>
                 <th>Email</th>
                 <td><span class="fw-normal">{{ employee.email }}</span></td>

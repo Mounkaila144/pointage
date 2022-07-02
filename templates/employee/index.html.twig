@@ -41,6 +41,7 @@
     <table class="table user-table table-hover align-items-center">
         <thead>
         <tr>
+                <th>Image</th>
                 <th>Id</th>
                 <th>Email</th>
                 <th>Nom</th>
@@ -51,6 +52,7 @@
         <tbody>
         {% for employee in employees %}
             <tr>
+                <td class="w-5"><img style="width: 70px; height: 70px" class="img-fluid img-thumbnail" src="{{ vich_uploader_asset(employee, 'imageFile') }}" alt="{{ employee.nom }}"></td>
                 <td><span class="fw-normal">{{ employee.id }}</span></td>
                 <td><span class="fw-normal">{{ employee.email }}</span></td>
                 <td><span class="fw-normal">{{ employee.nom }}</span></td>

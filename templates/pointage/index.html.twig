@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pointage index{% endblock %}
+
+{% block body %}
+    <h1>Historique</h1>
+
+<div class="table-responsive">
+    <table class="table user-table table-hover align-items-center">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Employer</th>
+                <th>Type</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pointage in pointages %}
+            <tr>
+                <td><span class="fw-normal">{{ pointage.id }}</span></td>
+                <td><a href="{{ path('app_employee_show',{'id':pointage.emploiyee.id}) }}" class="btn btn-indigo">{{ pointage.emploiyee.nom }}</a></td>
+                <td><span class="fw-normal">{{ pointage.type }}</span></td>
+                <td><span class="fw-normal">{{ pointage.date ? pointage.date|date('Y-m-d H:i:s') : '' }}</span></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}
